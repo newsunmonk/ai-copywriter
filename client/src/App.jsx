@@ -10,7 +10,7 @@ const initialForm = {
   strengths: "",
   targetAudience: "",
   tone: tones[0],
-  frameworks: ["AIDA", "PAS"],
+  frameworks: ["AIDA"],
 };
 
 export default function App() {
@@ -33,17 +33,10 @@ export default function App() {
   };
 
   const toggleFramework = (key) => {
-    setForm((current) => {
-      const exists = current.frameworks.includes(key);
-      const nextFrameworks = exists
-        ? current.frameworks.filter((item) => item !== key)
-        : [...current.frameworks, key];
-
-      return {
-        ...current,
-        frameworks: nextFrameworks,
-      };
-    });
+    setForm((current) => ({
+      ...current,
+      frameworks: [key],
+    }));
   };
 
   const handleSubmit = async (event) => {
@@ -264,7 +257,9 @@ CTA: ${item.cta}`;
               <div>
                 <div className="mb-3 flex items-center justify-between">
                   <span className="text-sm font-medium text-slate-200">카피라이팅 프레임워크</span>
-                  <span className="text-xs text-slate-400">{form.frameworks.length}개 선택됨</span>
+                    <span className="text-xs text-slate-400">
+                      {form.frameworks[0] ? `${form.frameworks[0]} 선택됨` : "1개 선택"}
+                    </span>
                 </div>
 
                 <div className="grid gap-3 sm:grid-cols-2">

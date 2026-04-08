@@ -35,7 +35,11 @@ function validateInput(body) {
   }
 
   if (!Array.isArray(body.frameworks) || body.frameworks.length === 0) {
-    return "frameworks는 최소 1개 이상 선택되어야 합니다.";
+    return "frameworks는 1개 선택되어야 합니다.";
+  }
+
+  if (body.frameworks.length !== 1) {
+    return "카피라이팅 프레임워크는 1개만 선택할 수 있습니다.";
   }
 
   const invalidFramework = body.frameworks.find((framework) => !frameworkGuides[framework]);

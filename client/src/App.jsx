@@ -104,31 +104,85 @@ CTA: ${item.cta}`;
     }
   };
 
+  const totalGenerated = copies.length;
+  const selectedTone = form.tone;
+
   return (
-    <div className="min-h-screen bg-surface bg-hero-grid bg-hero-grid font-display text-white">
-      <div className="mx-auto max-w-[1480px] px-5 py-8 lg:px-8 xl:px-10">
-        <header className="relative overflow-hidden rounded-[2.25rem] border border-white/10 bg-gradient-to-br from-white/[0.07] via-white/[0.025] to-purple-500/10 p-8 shadow-[0_20px_80px_rgba(0,0,0,0.35)] lg:p-10">
-          <div className="absolute -right-20 top-4 h-52 w-52 rounded-full bg-purple-500/20 blur-3xl" />
-          <div className="absolute left-12 top-0 h-28 w-28 animate-float rounded-full bg-fuchsia-400/10 blur-2xl" />
-          <div className="relative">
-            <div className="inline-flex rounded-full border border-purple-400/20 bg-purple-500/10 px-4 py-1 text-xs uppercase tracking-[0.28em] text-purple-200">
-              Performance Copy Studio
+    <div className="min-h-screen overflow-hidden bg-surface font-display text-white">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.08),transparent_22%),radial-gradient(circle_at_top_right,rgba(192,132,252,0.16),transparent_30%),linear-gradient(180deg,rgba(255,255,255,0.03),transparent_16%)]" />
+      <div className="pointer-events-none absolute inset-0 opacity-60 [background-image:linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] [background-size:36px_36px]" />
+
+      <div className="relative mx-auto max-w-[1480px] px-5 py-8 lg:px-8 xl:px-10">
+        <header className="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-[linear-gradient(135deg,rgba(10,10,14,0.92),rgba(26,18,44,0.88)_56%,rgba(46,20,72,0.9))] p-8 shadow-[0_35px_120px_rgba(0,0,0,0.45)] lg:p-10 xl:p-12">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.08),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(168,85,247,0.18),transparent_24%),linear-gradient(120deg,transparent,rgba(255,255,255,0.03),transparent)]" />
+          <div className="absolute -right-12 top-10 h-64 w-64 rounded-full bg-fuchsia-500/20 blur-3xl" />
+          <div className="absolute bottom-0 left-1/3 h-40 w-40 rounded-full bg-cyan-400/10 blur-3xl" />
+          <div className="relative grid gap-10 xl:grid-cols-[minmax(0,1.3fr)_360px] xl:items-end">
+            <div>
+              <div className="inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[11px] uppercase tracking-[0.34em] text-purple-100/90 backdrop-blur-sm">
+                Performance Copy Studio
+              </div>
+              <h1 className="mt-6 max-w-5xl text-4xl font-semibold leading-[0.98] tracking-[-0.05em] text-white md:text-6xl xl:text-[4.8rem]">
+                마케팅 감도와
+                <span className="block bg-gradient-to-r from-white via-fuchsia-100 to-cyan-200 bg-clip-text text-transparent">
+                  실전 전환 구조를 동시에 설계하는 카피 워크스테이션
+                </span>
+              </h1>
+              <p className="mt-6 max-w-3xl text-[15px] leading-8 text-slate-300 md:text-base">
+                브랜드 포지션, 고객 인사이트, 톤앤매너를 입력하면 Claude가 프레임워크별로 6개의 다른 앵글을 구성해
+                바로 테스트 가능한 헤드라인, 본문, CTA 세트를 정리합니다.
+              </p>
+
+              <div className="mt-8 grid gap-3 sm:grid-cols-3">
+                <div className="rounded-[1.4rem] border border-white/10 bg-white/[0.06] p-4 backdrop-blur-sm">
+                  <div className="text-[11px] uppercase tracking-[0.28em] text-slate-400">Frameworks</div>
+                  <div className="mt-3 text-3xl font-semibold tracking-[-0.04em] text-white">6</div>
+                  <div className="mt-1 text-sm text-slate-300">AIDA부터 스토리텔링까지 한 번에 비교</div>
+                </div>
+                <div className="rounded-[1.4rem] border border-white/10 bg-white/[0.06] p-4 backdrop-blur-sm">
+                  <div className="text-[11px] uppercase tracking-[0.28em] text-slate-400">Angles</div>
+                  <div className="mt-3 text-3xl font-semibold tracking-[-0.04em] text-white">6</div>
+                  <div className="mt-1 text-sm text-slate-300">감정, 논리, 유머, 긴박감, 호기심, 사회적 증거</div>
+                </div>
+                <div className="rounded-[1.4rem] border border-white/10 bg-white/[0.06] p-4 backdrop-blur-sm">
+                  <div className="text-[11px] uppercase tracking-[0.28em] text-slate-400">Output</div>
+                  <div className="mt-3 text-3xl font-semibold tracking-[-0.04em] text-white">{totalGenerated || 0}</div>
+                  <div className="mt-1 text-sm text-slate-300">현재 세션에서 생성된 전체 카피 수</div>
+                </div>
+              </div>
             </div>
-            <h1 className="mt-5 max-w-4xl text-4xl font-semibold leading-[1.08] tracking-[-0.04em] text-white md:text-5xl xl:text-[3.5rem]">
-              실무 마케터의 문장 감도로,
-              <span className="block bg-gradient-to-r from-purple-200 via-white to-purple-400 bg-clip-text text-transparent">
-                프레임워크별 광고 카피를 한 번에 설계하세요
-              </span>
-            </h1>
-            <p className="mt-5 max-w-3xl text-[15px] leading-8 text-slate-300 md:text-base">
-              브랜드 포지션, 고객 인사이트, 톤앤매너를 입력하면 Claude가
-              프레임워크별로 6개의 다른 앵글을 구성해 헤드라인, 본문, CTA까지 바로 활용 가능한 형태로 정리합니다.
-            </p>
+
+            <div className="grid gap-4">
+              <div className="rounded-[1.6rem] border border-white/10 bg-black/25 p-5 backdrop-blur-sm">
+                <div className="text-[11px] uppercase tracking-[0.3em] text-cyan-200/80">Creative Direction</div>
+                <div className="mt-3 text-xl font-semibold tracking-[-0.03em] text-white">지금 선택된 전략 조합</div>
+                <div className="mt-5 space-y-3 text-sm text-slate-300">
+                  <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3">
+                    <span>톤앤매너</span>
+                    <span className="font-medium text-white">{selectedTone}</span>
+                  </div>
+                  <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3">
+                    <span>선택 프레임워크</span>
+                    <span className="font-medium text-white">{form.frameworks.length}개</span>
+                  </div>
+                  <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3">
+                    <span>예상 결과 카드</span>
+                    <span className="font-medium text-white">{form.frameworks.length * 6}개</span>
+                  </div>
+                </div>
+              </div>
+              <div className="rounded-[1.6rem] border border-fuchsia-400/20 bg-fuchsia-500/10 p-5">
+                <div className="text-[11px] uppercase tracking-[0.3em] text-fuchsia-200/80">How Teams Use It</div>
+                <p className="mt-3 text-sm leading-7 text-fuchsia-50/90">
+                  매체별 카피 초안 수집, A/B 테스트 후보 정리, 광고주 제안서용 카피 방향성 도출까지 한 화면에서 처리합니다.
+                </p>
+              </div>
+            </div>
           </div>
         </header>
 
-        <main className="mt-8 grid gap-8 xl:grid-cols-[420px_minmax(0,1fr)]">
-          <section className="rounded-[2rem] border border-white/10 bg-panel/80 p-6 shadow-[0_18px_50px_rgba(0,0,0,0.3)] backdrop-blur-md">
+        <main className="mt-8 grid gap-8 xl:grid-cols-[430px_minmax(0,1fr)]">
+          <section className="rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(23,24,34,0.96),rgba(18,19,27,0.92))] p-6 shadow-[0_18px_50px_rgba(0,0,0,0.3)] backdrop-blur-md xl:sticky xl:top-8 xl:h-fit">
             <div className="mb-6">
               <div className="text-[11px] uppercase tracking-[0.3em] text-purple-300/70">Campaign Brief</div>
               <h2 className="mt-2 text-2xl font-semibold tracking-[-0.03em] text-white">브랜드 브리프 입력</h2>
@@ -145,7 +199,7 @@ CTA: ${item.cta}`;
                   value={form.brandName}
                   onChange={handleChange}
                   placeholder="예: 루미에르 스킨 / 봄 시즌 런칭 캠페인"
-                  className="w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-purple-400/60 focus:bg-white/[0.06]"
+                  className="w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-purple-400/60 focus:bg-white/[0.08] focus:ring-4 focus:ring-purple-500/10"
                 />
               </label>
 
@@ -156,7 +210,7 @@ CTA: ${item.cta}`;
                     name="industry"
                     value={form.industry}
                     onChange={handleChange}
-                    className="w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none transition focus:border-purple-400/60 focus:bg-white/[0.06]"
+                    className="w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none transition focus:border-purple-400/60 focus:bg-white/[0.08] focus:ring-4 focus:ring-purple-500/10"
                   >
                     {industries.map((industry) => (
                       <option key={industry} value={industry} className="bg-panel text-white">
@@ -172,7 +226,7 @@ CTA: ${item.cta}`;
                     name="tone"
                     value={form.tone}
                     onChange={handleChange}
-                    className="w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none transition focus:border-purple-400/60 focus:bg-white/[0.06]"
+                    className="w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none transition focus:border-purple-400/60 focus:bg-white/[0.08] focus:ring-4 focus:ring-purple-500/10"
                   >
                     {tones.map((tone) => (
                       <option key={tone} value={tone} className="bg-panel text-white">
@@ -191,7 +245,7 @@ CTA: ${item.cta}`;
                   onChange={handleChange}
                   rows="4"
                   placeholder="예: 7일 사용 후 보습 개선 수치 확보, 민감성 피부 대상 저자극 테스트 완료, 첫 구매 전환율이 높은 대표 상품"
-                  className="w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-purple-400/60 focus:bg-white/[0.06]"
+                  className="w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-purple-400/60 focus:bg-white/[0.08] focus:ring-4 focus:ring-purple-500/10"
                 />
               </label>
 
@@ -203,7 +257,7 @@ CTA: ${item.cta}`;
                   onChange={handleChange}
                   rows="3"
                   placeholder="예: 빠르게 성과를 보고 싶고 구매 전 명확한 근거를 확인하는 20~30대 직장인 여성"
-                  className="w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-purple-400/60 focus:bg-white/[0.06]"
+                  className="w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-purple-400/60 focus:bg-white/[0.08] focus:ring-4 focus:ring-purple-500/10"
                 />
               </label>
 
@@ -234,14 +288,14 @@ CTA: ${item.cta}`;
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full rounded-2xl bg-gradient-to-r from-accent to-accentDeep px-5 py-3 text-sm font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
+                className="w-full rounded-2xl bg-[linear-gradient(90deg,#7c3aed,#a855f7_52%,#22d3ee)] px-5 py-3.5 text-sm font-semibold text-white shadow-[0_18px_40px_rgba(124,58,237,0.35)] transition hover:-translate-y-0.5 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {loading ? "마케팅 카피 조합 생성 중..." : "카피 초안 생성하기"}
               </button>
             </form>
           </section>
 
-          <section className="rounded-[2rem] border border-white/10 bg-panel/60 p-6 shadow-[0_18px_50px_rgba(0,0,0,0.3)] backdrop-blur-md">
+          <section className="rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(21,22,31,0.92),rgba(16,17,24,0.9))] p-6 shadow-[0_18px_50px_rgba(0,0,0,0.3)] backdrop-blur-md">
             <div className="mb-6 flex items-center justify-between gap-4">
               <div>
                 <div className="text-[11px] uppercase tracking-[0.3em] text-purple-300/70">Generated Copy</div>
@@ -250,11 +304,16 @@ CTA: ${item.cta}`;
                   프레임워크별로 감정, 논리, 유머, 긴박감, 호기심, 사회적 증거 앵글을 나눠 바로 테스트할 수 있게 구성됩니다.
                 </p>
               </div>
-              {copiedKey ? (
-                <div className="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-4 py-2 text-xs font-medium text-emerald-200">
-                  {copiedKey} 저장 완료
+              <div className="flex flex-wrap items-center justify-end gap-2">
+                <div className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-medium text-slate-300">
+                  총 {totalGenerated}개 결과
                 </div>
-              ) : null}
+                {copiedKey ? (
+                  <div className="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-4 py-2 text-xs font-medium text-emerald-200">
+                    {copiedKey} 저장 완료
+                  </div>
+                ) : null}
+              </div>
             </div>
 
             {loading ? (
@@ -273,10 +332,10 @@ CTA: ${item.cta}`;
                 {groupedCopies.map(
                   ({ framework, items }) =>
                     items.length > 0 && (
-                      <div key={framework}>
-                        <div className="mb-4 flex items-center gap-3">
-                          <h3 className="text-xl font-semibold text-white">{framework}</h3>
-                          <div className="h-px flex-1 bg-gradient-to-r from-purple-500/50 to-transparent" />
+                      <div key={framework} className="rounded-[1.8rem] border border-white/8 bg-white/[0.025] p-5">
+                        <div className="mb-5 flex items-center gap-3">
+                          <h3 className="text-2xl font-semibold tracking-[-0.03em] text-white">{framework}</h3>
+                          <div className="h-px flex-1 bg-gradient-to-r from-fuchsia-500/60 via-violet-500/40 to-transparent" />
                           <span className="rounded-full border border-purple-400/20 bg-purple-500/10 px-3 py-1 text-xs text-purple-200">
                             {items.length}개 버전
                           </span>
